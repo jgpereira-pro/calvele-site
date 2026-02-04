@@ -1,29 +1,73 @@
 ---
-// Parte 1: Frontmatter (JavaScript/TypeScript)
-// Tudo aqui roda apenas no servidor, no momento do build.
+// src/layouts/MainLayout.astro
+import Header from "../components/Header.astro";
+
+interface Props {
+    title: string;
+}
+
 const { title } = Astro.props;
 ---
 
-<html lang="pt-br">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>{title} | Calvele Hamburgueria</title>
-	</head>
-	<body class="bg-stone-950 text-white font-sans">
-		<nav
-			class="p-4 border-b border-white/10 flex justify-between items-center"
-		>
-			<span class="text-2xl font-bold text-yellow-500">CALVELE</span>
-		</nav>
+<!doctype html>
+<html lang="pt-br" class="scroll-smooth">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="description"
+            content="Calvele Burguer - O melhor artesanal da Ilha do Governador"
+        />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title} | Calvele Burguer</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="bg-calvele-dark text-white font-sans">
+        <Header />
 
-		<main>
-			<slot />
-		</main>
+        <main class="pt-16 md:pt-20">
+            <slot />
+        </main>
 
-		<footer class="p-8 text-center text-gray-500 text-sm">
-			© 2024 Calvele Hamburgueria - Foco em Sabor.
-		</footer>
-	</body>
+        <footer class="bg-black py-12 px-4 border-t border-white/5">
+            <div class="max-w-6xl mx-auto text-center">
+                <span class="text-xl font-black italic tracking-tighter uppercase">
+                    CALVELE <span class="text-calvele-red">.</span>
+                </span>
+                <p class="text-gray-500 text-sm mt-4">
+                    Ilha do Governador - R. Ituá, 1678 - Jardim Guanabara, Rio
+                    de Janeiro - RJ, 21940-184
+                </p>
+                <div class="flex justify-center gap-6 mt-6">
+                    <a
+                        href="https://www.instagram.com/calveleburguer/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-gray-400 hover:text-white transition font-medium"
+                    >
+                        Instagram
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>
+
+<style is:global>
+    :root {
+        --font-sans: 'Inter', sans-serif;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        font-family: var(--font-sans);
+    }
+</style>

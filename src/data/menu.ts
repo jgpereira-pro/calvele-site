@@ -46,6 +46,7 @@ const LINK_99 = "#";
 export const CATEGORIAS = [
     {
         id: "novidades",
+        menuLabel: "Novidades",
         titulo: "Apaixone-se por essa novidade",
         itens: [
             {
@@ -60,6 +61,7 @@ export const CATEGORIAS = [
     },
     {
         id: "entradas",
+        menuLabel: "Entradas",
         titulo: "Nossas Entradas",
         itens: [
             {
@@ -98,6 +100,7 @@ export const CATEGORIAS = [
     },
     {
         id: "penosas",
+        menuLabel: "Penosas",
         titulo: "A Família Penosa Aumentou!",
         itens: [
             {
@@ -144,6 +147,7 @@ export const CATEGORIAS = [
     },
     {
         id: "mais-vendidos",
+        menuLabel: "Favoritos",
         titulo: "Mais Vendidos",
         itens: [
             {
@@ -190,6 +194,7 @@ export const CATEGORIAS = [
     },
     {
         id: "hamburgers-calvele",
+        menuLabel: "Classicos",
         titulo: "Hambúrgueres Calvele",
         itens: [
             {
@@ -236,7 +241,8 @@ export const CATEGORIAS = [
     },
     {
         id: "molhos",
-        titulo: "Molhos",
+        menuLabel: "Molhos",
+        titulo: "Molhos Extras",
         itens: [
             {
                 titulo: "Maionese Trufada",
@@ -274,7 +280,8 @@ export const CATEGORIAS = [
     },
     {
         id: "bebidas",
-        titulo: "Bebidas",
+        menuLabel: "Bebidas",
+        titulo: "Bebidas Geladas",
         itens: [
             {
                 titulo: "Coca-Cola Original 350ml",

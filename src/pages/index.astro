@@ -1,41 +1,50 @@
 ---
-// 1. Importações de Layout e Componentes
+// src/pages/index.astro
 import MainLayout from "../layouts/MainLayout.astro";
 import MenuSection from "../components/MenuSection.astro";
-
-// 2. Importação Dos Dados do Cardápio
 import { CATEGORIAS } from "../data/menu";
+
+// Se você tiver uma imagem local, importe ela assim:
+import imgFrente from "../assets/frente_calvele.webp";
 ---
 
 <MainLayout title="Cardápio Completo">
-  <section
-    class="relative min-h-[85vh] flex items-center justify-center bg-calvele-dark text-center px-4 overflow-hidden"
-  >
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-calvele-dark via-transparent to-transparent z-10"
-    >
-    </div>
+  
+  <section class="relative min-h-[85vh] flex items-center justify-center px-4 overflow-hidden">
+    
+    <div class="absolute inset-0 z-0">
+        <img 
+            src={imgFrente.src}
+            alt="Hambúrguer Calvele em destaque"
+            class="w-full h-full object-cover opacity-60" 
+        />
+        </div>
 
-    <div class="relative z-20 max-w-4xl flex flex-col items-center">
-      <h1
-        class="text-5xl md:text-7xl font-black text-white mb-6 italic tracking-tighter leading-none"
-      >
-        MATA A SUA <span class="text-calvele-red">FOME.</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-calvele-dark via-calvele-dark/80 to-black/40 z-10"></div>
+
+    <div class="relative z-20 max-w-4xl flex flex-col items-center text-center">
+      
+      <span class="text-calvele-yellow font-bold tracking-[0.2em] uppercase text-sm mb-4 animate-fade-in">
+        O Verdadeiro Artesanal
+      </span>
+
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 italic tracking-tighter leading-none uppercase drop-shadow-2xl">
+        MATA A SUA <span class="text-transparent bg-clip-text bg-gradient-to-r from-calvele-red to-red-600">FOME</span>
       </h1>
-      <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-xl">
-        O verdadeiro hambúrguer artesanal da região. Escolha seu app favorito e
-        receba quentinho em casa.
+      
+      <p class="text-gray-200 text-lg md:text-xl mb-10 max-w-xl font-medium drop-shadow-md">
+        Blend suculento, ingredientes frescos e aquele sabor que só a Calvele tem
+        Escolha seu app e receba em casa
       </p>
 
       <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto">
         <a
           href="https://www.ifood.com.br/delivery/rio-de-janeiro-rj/calvele-burguer-jardim-guanabara/f34f5af4-e095-42dc-849c-0b5ff080b44f?utm_source=orderfood"
-          class="group relative bg-[#EA1D2C] text-white font-bold py-4 px-10 rounded-full hover:bg-red-700 transition shadow-lg shadow-red-900/30 flex items-center justify-center gap-3"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative bg-[#EA1D2C] text-white font-bold py-4 px-10 rounded-full hover:bg-red-700 transition-all hover:-translate-y-1 shadow-xl shadow-red-900/40 flex items-center justify-center gap-3"
         >
-          <span
-            class="bg-white text-[#EA1D2C] rounded-full w-6 h-6 flex items-center justify-center text-xs font-black"
-            >i</span
-          >
+          <span class="bg-white text-[#EA1D2C] rounded-full w-6 h-6 flex items-center justify-center text-xs font-black italic">i</span>
           PEDIR NO IFOOD
         </a>
 
@@ -43,25 +52,25 @@ import { CATEGORIAS } from "../data/menu";
           href="LINK_99_GERAL"
           target="_blank"
           rel="noopener noreferrer"
-          class="group relative bg-[#FF5500] text-white font-bold py-4 px-10 rounded-full hover:bg-orange-600 transition shadow-lg shadow-orange-900/30 flex items-center justify-center gap-3"
+          class="group relative bg-[#FF5500] text-white font-bold py-4 px-10 rounded-full hover:bg-orange-600 transition-all hover:-translate-y-1 shadow-xl shadow-orange-900/40 flex items-center justify-center gap-3"
         >
-          <span
-            class="bg-white text-[#FF5500] rounded-full w-6 h-6 flex items-center justify-center text-xs font-black"
-            >9</span
-          >
+          <span class="bg-white text-[#FF5500] rounded-full w-6 h-6 flex items-center justify-center text-xs font-black">9</span>
           <span class="block md:hidden">PEDIR NO 99FOOD</span>
           <span class="hidden md:block">BAIXAR APP 99FOOD</span>
         </a>
       </div>
 
-      <p class="mt-8 text-sm text-gray-500 font-medium italic">
-        Entregamos em um raio de 8km (descobrir)🛵
+      <p class="mt-8 text-sm text-gray-400 font-medium italic flex items-center gap-2">
+        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+        Entregando na Ilha do Governador e regiões próximas
       </p>
     </div>
   </section>
-  <div class="bg-calvele-dark pb-20">
-    {
-      CATEGORIAS.map((cat) => (
+
+  <div class="bg-calvele-dark pb-20 relative z-20">
+    <div class="h-20 bg-gradient-to-b from-transparent to-calvele-dark -mt-20 relative z-20 pointer-events-none"></div>
+
+    {CATEGORIAS.map((cat) => (
         <MenuSection 
           id={cat.id} 
           titulo={cat.titulo} 
@@ -70,4 +79,5 @@ import { CATEGORIAS } from "../data/menu";
       ))
     }
   </div>
+
 </MainLayout>

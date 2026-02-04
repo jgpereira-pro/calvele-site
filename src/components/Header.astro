@@ -1,0 +1,58 @@
+---
+// src/components/Header.astro
+import { CATEGORIAS } from "../data/menu";
+---
+
+<header class="fixed top-0 left-0 w-full bg-calvele-dark/90 backdrop-blur-md border-b border-white/10 z-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      
+      <a href="/" class="flex items-center gap-2 group">
+        <span class="text-2xl font-black italic text-white tracking-tighter uppercase">
+          CALVELE
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6" aria-label="Navegação principal">
+        {CATEGORIAS.map((cat) => (
+          <a
+            href={`#${cat.id}`}
+            class="text-gray-400 hover:text-calvele-yellow text-sm font-bold uppercase tracking-wider transition-colors"
+          >
+            {cat.menuLabel} 
+          </a>
+        ))}
+      </nav>
+
+      <a
+        href="https://www.ifood.com.br/delivery/rio-de-janeiro-rj/calvele-burguer-jardim-guanabara/f34f5af4-e095-42dc-849c-0b5ff080b44f"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden md:block bg-calvele-red text-white text-xs font-black py-2 px-6 rounded-full hover:scale-105 transition-transform"
+      >
+        PEDIR AGORA
+      </a>
+    </div>
+
+    <nav class="md:hidden flex overflow-x-auto pb-3 gap-4 no-scrollbar" aria-label="Categorias do cardápio">
+      {CATEGORIAS.map((cat) => (
+        <a
+          href={`#${cat.id}`}
+          class="whitespace-nowrap text-gray-400 active:text-calvele-yellow text-xs font-bold uppercase tracking-widest border border-white/10 px-4 py-1.5 rounded-full transition-colors"
+        >
+          {cat.titulo}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
