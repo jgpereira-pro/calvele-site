@@ -1,0 +1,35 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Página não encontrada">
+  <section class="min-h-[70vh] flex items-center justify-center px-4 text-center">
+    <div class="max-w-md w-full">
+      <div class="mb-8 relative inline-block">
+        <span class="text-9xl font-black text-white/5 absolute -inset-4 select-none">404</span>
+        <span class="text-6xl md:text-7xl block relative z-10">🍔</span>
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-black text-white mb-4 uppercase italic tracking-tighter">
+        OPA! ONDE ESTÁ O <span class="text-calvele-red">BURGUER?</span>
+      </h1>
+
+      <p class="text-gray-400 mb-10 leading-relaxed">
+        Parece que você tentou acessar uma página que não existe ou foi movida. Não deixe sua fome esperando!
+      </p>
+
+      <a 
+        href="/"
+        class="inline-flex items-center justify-center bg-white text-black font-black py-4 px-8 rounded-full hover:bg-calvele-yellow transition-all hover:-translate-y-1 shadow-xl shadow-white/5 uppercase tracking-widest text-xs"
+      >
+        Voltar para o Cardápio
+      </a>
+
+      <div class="mt-12 pt-8 border-t border-white/5">
+        <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">
+          Calvele Burguer • Jardim Guanabara
+        </p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

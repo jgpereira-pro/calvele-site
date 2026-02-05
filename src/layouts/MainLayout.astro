@@ -13,10 +13,7 @@ const { title } = Astro.props;
 <html lang="pt-br" class="scroll-smooth">
     <head>
         <meta charset="utf-8" />
-        <meta
-            name="description"
-            content="Calvele Burguer - O melhor artesanal da Ilha do Governador"
-        />
+        <meta name="description" content="Calvele Burguer - O melhor artesanal da Ilha do Governador" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
@@ -24,37 +21,77 @@ const { title } = Astro.props;
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
-            rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
     </head>
-    <body class="bg-calvele-dark text-white font-sans">
+    
+    <body class="bg-calvele-dark text-white font-sans flex flex-col min-h-screen">
         <Header />
 
-        <main class="pt-16 md:pt-20">
+        <main class="pt-16 md:pt-20 flex-grow">
             <slot />
         </main>
 
-        <footer class="bg-black py-12 px-4 border-t border-white/5">
-            <div class="max-w-6xl mx-auto text-center">
-                <span class="text-xl font-black italic tracking-tighter uppercase">
-                    CALVELE <span class="text-calvele-red">.</span>
-                </span>
-                <p class="text-gray-500 text-sm mt-4">
-                    Ilha do Governador - R. Ituá, 1678 - Jardim Guanabara, Rio
-                    de Janeiro - RJ, 21940-184
-                </p>
-                <div class="flex justify-center gap-6 mt-6">
-                    <a
-                        href="https://www.instagram.com/calveleburguer/"
-                        target="_blank"
+        <footer class="bg-black pt-16 pb-8 px-4 border-t border-white/10 mt-auto" aria-label="Rodapé do site">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center md:text-left">
+                
+                <section class="flex flex-col items-center md:items-start">
+                    <span class="text-2xl font-black italic tracking-tighter uppercase mb-4">
+                        CALVELE
+                    </span>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
+                        O verdadeiro hambúrguer artesanal do Jardim Guanabara. Sabor e tradição desde 2017.
+                    </p>
+                    <nav class="flex gap-4 mt-6" aria-label="Redes Sociais">
+                        <a
+                            href="https://www.instagram.com/calveleburguer/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-gray-300 hover:text-calvele-yellow transition-all font-bold text-xs tracking-widest uppercase border border-white/20 px-5 py-2.5 rounded-full hover:border-calvele-yellow focus:ring-2 focus:ring-calvele-yellow outline-none"
+                        >
+                            Instagram
+                        </a>
+                    </nav>
+                </section>
+
+                <section class="flex flex-col items-center md:items-start">
+                    <h2 class="text-white font-bold uppercase tracking-widest mb-5 text-sm">Localização</h2>
+                    <address class="text-gray-400 text-sm not-italic leading-loose">
+                        Rua Ituá, 1678<br>
+                        Jardim Guanabara, Ilha do Governador<br>
+                        Rio de Janeiro - RJ<br>
+                        CEP: 21940-184
+                    </address>
+                    <a 
+                        href="https://maps.app.goo.gl/seu-link-aqui" 
+                        target="_blank" 
                         rel="noopener noreferrer"
-                        class="text-gray-400 hover:text-white transition font-medium"
+                        class="text-calvele-red text-xs font-bold mt-4 hover:underline inline-flex items-center gap-1 group"
                     >
-                        Instagram
+                        ABRIR NO GOOGLE MAPS 
+                        <span class="group-hover:translate-x-1 transition-transform">→</span>
                     </a>
-                </div>
+                </section>
+
+                <section class="flex flex-col items-center md:items-start">
+                    <h2 class="text-white font-bold uppercase tracking-widest mb-5 text-sm">Horários</h2>
+                    <ul class="text-gray-400 text-sm space-y-3 w-full max-w-[240px] md:max-w-none">
+                        <li class="flex justify-between border-b border-white/5 pb-1">
+                            <span>Terça a Quinta</span>
+                            <span class="text-white font-medium">18h — 23h</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/5 pb-1">
+                            <span>Sexta a Domingo</span>
+                            <span class="text-white font-medium">18h — 00h</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <div class="border-t border-white/5 mt-16 pt-8 text-center">
+                <p class="text-gray-500 text-[10px] uppercase tracking-widest font-medium">
+                    &copy; {new Date().getFullYear()} Calvele Burguer • Orgulhosamente Carioca
+                </p>
             </div>
         </footer>
     </body>
@@ -69,5 +106,6 @@ const { title } = Astro.props;
     }
     body {
         font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
     }
 </style>
