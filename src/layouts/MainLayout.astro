@@ -1,7 +1,6 @@
 ---
 // src/layouts/MainLayout.astro
 import Header from "../components/Header.astro";
-import Analytics from '@vercel/analytics/astro'
 
 interface Props {
     title: string;
@@ -15,8 +14,9 @@ const {
         image = "/logo.png"
     } = Astro.props;
 
-const siteUrl = new URL("https://calvele.com.br");
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const siteUrl = "https://www.calveleburguer.com.br"; // Ajuste se já tiver o domínio final, senão mantenha a lógica anterior ou vercel url
+// Para garantir robustez enquanto não tem domínio próprio:
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || "https://calvele-site.vercel.app");
 const socialImage = new URL(image, Astro.url.origin).href;
 ---
 
@@ -58,79 +58,48 @@ const socialImage = new URL(image, Astro.url.origin).href;
 
         <footer class="bg-black pt-16 pb-8 px-4 border-t border-white/10 mt-auto" aria-label="Rodapé do site">
             <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center md:text-left">
-                
                 <section class="flex flex-col items-center md:items-start">
                     <span class="text-2xl font-black italic tracking-tighter uppercase mb-4">
-                        CALVELE
+                        CALVELE <span class="text-calvele-red">.</span>
                     </span>
                     <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
                         O verdadeiro hambúrguer artesanal. Sabor e tradição desde 2007.
                     </p>
-                    <nav class="flex gap-4 mt-6" aria-label="Redes Sociais">
-                        <a
-                            href="https://www.instagram.com/calveleburguer/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-gray-300 hover:text-calvele-yellow transition-all font-bold text-xs tracking-widest uppercase border border-white/20 px-5 py-2.5 rounded-full hover:border-calvele-yellow focus:ring-2 focus:ring-calvele-yellow outline-none"
-                        >
-                            Instagram
-                        </a>
+                    <nav class="flex gap-4 mt-6">
+                        <a href="https://www.instagram.com/calveleburguer/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-calvele-yellow transition-all font-bold text-xs tracking-widest uppercase border border-white/20 px-5 py-2.5 rounded-full hover:border-calvele-yellow">Instagram</a>
                     </nav>
                 </section>
-
+                
                 <section class="flex flex-col items-center md:items-start">
                     <h2 class="text-white font-bold uppercase tracking-widest mb-5 text-sm">Localização</h2>
                     <address class="text-gray-400 text-sm not-italic leading-loose">
-                        Rua Ituá, 1678<br>
-                        Jardim Guanabara, Ilha do Governador<br>
-                        Rio de Janeiro - RJ<br>
-                        CEP: 21940-184
+                        Rua Ituá, 1678<br>Jardim Guanabara, Ilha do Governador<br>Rio de Janeiro - RJ<br>CEP: 21940-184
                     </address>
-                    <a 
-                        href="https://maps.app.goo.gl/seu-link-aqui" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        class="text-calvele-red text-xs font-bold mt-4 hover:underline inline-flex items-center gap-1 group"
-                    >
-                        ABRIR NO GOOGLE MAPS 
-                        <span class="group-hover:translate-x-1 transition-transform">→</span>
-                    </a>
+                    <a href="https://maps.app.goo.gl/seu-link-aqui" target="_blank" rel="noopener noreferrer" class="text-calvele-red text-xs font-bold mt-4 hover:underline inline-flex items-center gap-1 group">ABRIR NO GOOGLE MAPS →</a>
                 </section>
 
                 <section class="flex flex-col items-center md:items-start">
                     <h2 class="text-white font-bold uppercase tracking-widest mb-5 text-sm">Horários</h2>
                     <ul class="text-gray-400 text-sm space-y-3 w-full max-w-[240px] md:max-w-none">
-                        <li class="flex justify-between border-b border-white/5 pb-1">
-                            <span>Terça a Quinta</span>
-                            <span class="text-white font-medium">18h — 23h</span>
-                        </li>
-                        <li class="flex justify-between border-b border-white/5 pb-1">
-                            <span>Sexta a Domingo</span>
-                            <span class="text-white font-medium">18h — 00h</span>
-                        </li>
+                        <li class="flex justify-between border-b border-white/5 pb-1"><span>Terça a Quinta</span><span class="text-white font-medium">18h — 23h</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-1"><span>Sexta a Domingo</span><span class="text-white font-medium">18h — 00h</span></li>
                     </ul>
                 </section>
-
             </div>
-
             <div class="border-t border-white/5 mt-16 pt-8 text-center">
-                <p class="text-gray-500 text-[10px] uppercase tracking-widest font-medium">
-                    © {new Date().getFullYear()} Calvele Burguer • Orgulhosamente Carioca
-                </p>
+                <p class="text-gray-500 text-[10px] uppercase tracking-widest font-medium">© {new Date().getFullYear()} Calvele Burguer • Orgulhosamente Carioca</p>
             </div>
         </footer>
+
+        <script>
+            import { inject } from '@vercel/analytics';
+            inject();
+        </script>
     </body>
 </html>
 
 <style is:global>
-    :root {
-        --font-sans: 'Inter', sans-serif;
-    }
-    html {
-        scroll-behavior: smooth;
-    }
-    body {
-        font-family: var(--font-sans);
-        -webkit-font-smoothing: antialiased;
-    }
+    :root { --font-sans: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 </style>
